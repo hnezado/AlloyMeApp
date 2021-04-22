@@ -1,0 +1,43 @@
+
+0. Eliminar carpeta bin (con el archivo www)
+  0.1. (app.js) Añadir el listener del servidor
+  0.2. (package.json) Cambiar los scripts (lineas 5 a 8)
+
+1. Instalar paquetes:
+  - bcrypt (si no funciona, instalar bcryptjs)
+  - connect-flash
+  - express-session
+  - passport
+  - passport-local
+
+2. (app.js) Importar los paquetes que hemos instalado
+
+3. (app.js) Configurar el middleware de Session
+
+4. (app.js) Configurar la serialización del usuario
+
+5. (app.js) Configuar la deserialización del usuario
+
+6. (app.js) Configurar el middleware de flash
+
+7. (app.js) Configurar el middleware del Strategy
+
+8. (/models) Crear archivo 'User.model.js' y crear el modelo del usuario
+
+9. (app.js) Importar el modelo User.model
+
+10. (app.js) Configuar middleware de passport
+
+///////////////////////// ^ ^ Important steps ^ ^
+
+11. (routes) Crear archivo auth.routes.js donde vamos a meter nuestras rutas de auth
+
+  - GET de signup
+  - GET de login
+  - POST de signup
+  - POST de login (OJO: la configuración varía un poco. Mirad la ruta en el archivo)
+  - GET logout
+
+12. Crear vistas signup.hbs y login.hbs y rellenarla con los forms
+
+13. (auth.routes.js) Crear middleware de checkForAuth

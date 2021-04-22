@@ -1,0 +1,11 @@
+<h1>Profile page</h1>
+
+<h2>Welcome {{username}}</h2>
+
+<a href="sports/new">New sport</a>
+
+<h3>Your sports:</h3>
+
+{{#each sports}}
+<p>{{this.sport}}</p>
+{{/each}}
