@@ -21,7 +21,7 @@ const User = require('./models/User.model')
 
 // DB config
 mongoose
-  .connect('mongodb://localhost/passport-example', {
+  .connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
