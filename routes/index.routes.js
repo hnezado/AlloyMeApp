@@ -15,6 +15,8 @@ const checkForAuth = (req, res, next) => {
 
 // Get Homepage
 router.get('/', (req, res, next) => {
+  const layout = req.user ? '/layouts/auth' : '/layout/noAuth'
+  console.log(req.user)
   res.render('index')
 });
 

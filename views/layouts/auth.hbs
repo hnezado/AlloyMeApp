@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/stylesheets/style.css"/>
+  <link rel="stylesheet" href="/stylesheets/styles-nav-bar.css">
+</head>
+<body>
+
+  <nav class="nav-bar">
+    <div class="nav-btn-left">
+      <a href="/"><img class="atom-icon" src="images/atom.svg"></a>
+      <a class="nav-btn" href="/my-page">My Page</a>
+    </div>
+    <div class="nav-btn-right">
+      <a id="nav-logout" class="nav-btn" href="/logout">Logout</a>
+    </div>
+  </nav>
+
+  {{!-- <div id="show-nav"></div> --}}
+
+  <main>
+    {{{body}}}
+  </main>
+
+  <script src="/javascripts/script.js"></script>
+</body>
+</html>
