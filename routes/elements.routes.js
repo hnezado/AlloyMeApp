@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Sport = require('../models/Sport.model')
+const Element = require('../models/Element.model')
 const User = require('../models/User.model')
+
 
 // Middleware checkForAuth
 const checkForAuth = (req, res, next) => {
@@ -15,15 +16,15 @@ const checkForAuth = (req, res, next) => {
 
 // Get Sports page
 router.get('/new', checkForAuth, (req, res, next) => {
-  res.render('sports/newSport');
+  res.render('elements/newElement');
 })
 
 router.post('/new', (req, res) => {
-  Sport.create(req.body)
+  Element.create(req.body)
   .then((result) => {
-    User.findByIdAndUpdate(req.user._id, {$push: {sports: result._id}})
+    User.findByIdAndUpdate(req.user._id, {$push: {elements: result._id}})
     .then((result) => {
-      res.redirect('/profile')
+      res.redirect('/my-page')
     })
   })
   .catch((err) => {

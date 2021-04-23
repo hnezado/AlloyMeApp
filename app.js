@@ -23,7 +23,8 @@ const User = require('./models/User.model')
 mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: true
   })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -101,7 +102,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // Routes
 app.use('/', require('./routes/index.routes'));
 app.use('/', require('./routes/auth.routes'));
-app.use('/sports', require('./routes/sports.routes'));
+app.use('/element', require('./routes/elements.routes'));
 
 // Listener
 app.listen(process.env.PORT, () => {

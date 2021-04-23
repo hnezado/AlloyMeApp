@@ -4,7 +4,7 @@ const userSchema = new Schema(
   {
     username: {type: String, required: true, createIndexes: true},
     password: {type: String, required: true, createIndexes: true},
-    sports: [{type: Schema.Types.ObjectId, ref: 'Sport'}],
+    elements: [{type: Schema.Types.ObjectId, ref: 'Element'}],
   },
   {
     timestamps: true,

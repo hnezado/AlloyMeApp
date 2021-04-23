@@ -5,6 +5,14 @@ const passport = require('passport')
 
 const User = require('../models/User.model')
 
+const checkForAuth = (req,res,next) => {
+  if(req.isAuthenticated()){
+    return next()
+  }else{
+    res.redirect('/login')
+  }
+}
+
 // Get sign-in page
 router.get('/signup', (req, res, next) => {
   res.render('signup');
@@ -31,7 +39,7 @@ router.post('/signup', (req, res) => {
     }
   })
   .catch((err) => {
-    console.log(err)
+    res.status(406).send(err)
   })
 })
 
@@ -41,7 +49,7 @@ router.get('/login', (req, res, next) => {
 })
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/profile',
+  successRedirect: '/my-page',
   failureRedirect: '/login',
   failureFlash: true,
   passReqToCallback: true

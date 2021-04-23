@@ -1,0 +1,13 @@
+<h1>Add a new element</h1>
+
+<form action="/elements/new" method="POST">
+
+  <input type="text" name="element" placeholder="Input element">
+
+  <button type="submit">Create Element</button>
+
+</form>
+
+{{#if errMsg}}
+  <p>{{errMsg}}</p>
+{{/if}}

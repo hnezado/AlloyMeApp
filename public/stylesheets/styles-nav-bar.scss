@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+@mixin flexCenter($direction){
+  display: flex;
+  flex-direction: direction;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-btn-left{
+  @include flexCenter(row);
+}
+
+.nav-btn-right{
+  @include flexCenter(row);
+}
+
+.atom-icon{
+  width: 80px;
+}
+
+.nav-bar{
+  @include flexCenter(row);
+  background-color: tan;
+  width: 100%;
+}
+
+.nav-btn{
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  margin: 0 15px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  padding: 20px 20px;
+  &:hover{
+    background-color: bisque;
+    color: saddlebrown;
+    padding: 20px 20px;
+  }
+  &:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: black;
+    top: 100%;
+    animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+  }
+  &:hover:before{
+    animation:in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+  }
+}
+
+@keyframes in{
+  0%{
+    width: 0;
+    left:0;
+    right:auto;
+  }
+  100%{
+    left:0;
+    right:auto;
+    width: 100%;
+  }
+}
+@keyframes out{
+  0%{
+    width:100%;
+    left: auto;
+    right: 0;
+  }
+  100%{
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
