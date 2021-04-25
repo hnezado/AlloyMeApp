@@ -49,17 +49,21 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: tan;
   width: 100%;
 }
 
 .nav-btn {
+  text-align: center;
   font-family: 'Oswald', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   text-decoration: none;
   color: black;
-  margin: 0 15px;
+  margin: 0 12px;
   font-size: 20px;
   letter-spacing: 1px;
   position: relative;

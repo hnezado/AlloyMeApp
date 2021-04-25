@@ -1,6 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
 body {
   background-color: wheat;
-  font: 14px "Georgia", Helvetica, Arial, sans-serif;
+  font: 14px "Josefin Sans", Helvetica, Arial, sans-serif;
   margin: 0;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 3rem;
+  text-align: center;
+  margin: 60px 0 40px;
+}
+
+input {
+  font: 18px 'Josefin Sans', sans-serif;
+  text-align: center;
+  width: 250px;
+  height: 30px;
+  background-color: antiquewhite;
+  border: none;
+  margin: 5px 0;
+}
+
+button {
+  font: 24px 'Josefin Sans', sans-serif;
+  width: 150px;
+  height: 50px;
+  border: none;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+button:hover {
+  font-weight: 600;
+  background-color: tan;
+}
+
+#signup-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+.knowledge-points {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.3rem;
+}
+
+.knowledge-points p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 100px 0 0;
+}
+
+#points-num {
+  color: red;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 20px 0;
+}
+
+.saved-comments {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.3rem;
+}
+
+.saved-comments p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 100px 0 0;
+}
+
+.saved-comments table {
+  margin: 30px;
+}
+
+.saved-comments tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.saved-comments td {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 20px;
+}
+
+.saved-comments input {
+  width: 120px;
+}
+
+.saved-comments button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+}
+
+.saved-comments img {
+  width: 10px;
 }
 /*# sourceMappingURL=style.css.map */

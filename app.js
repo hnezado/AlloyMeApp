@@ -102,7 +102,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // Routes
 app.use('/', require('./routes/index.routes'));
 app.use('/', require('./routes/auth.routes'));
-app.use('/element', require('./routes/elements.routes'));
+app.use('/', require('./routes/userData.routes'));
 
 // Listener
 app.listen(process.env.PORT, () => {

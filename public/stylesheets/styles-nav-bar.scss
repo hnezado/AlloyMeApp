@@ -9,6 +9,7 @@
 
 .nav-btn-left{
   @include flexCenter(row);
+  
 }
 
 .nav-btn-right{
@@ -21,17 +22,19 @@
 
 .nav-bar{
   @include flexCenter(row);
+  justify-content: space-between;
   background-color: tan;
   width: 100%;
 }
 
 .nav-btn{
+  text-align: center;
   font-family: 'Oswald', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   text-decoration: none;
   color: black;
-  margin: 0 15px;
+  margin: 0 12px;
   font-size: 20px;
   letter-spacing: 1px;
   position: relative;

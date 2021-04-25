@@ -7,28 +7,26 @@ const User = require('../models/User.model')
 
 const checkForAuth = (req,res,next) => {
   if(req.isAuthenticated()){
-    return next()
+    res.redirect('/my-page')
   }else{
-    res.redirect('/login')
+    return next()
   }
 }
 
-// Get sign-in page
-router.get('/signup', (req, res, next) => {
-  res.render('signup');
+router.get('/signup', checkForAuth, (req, res, next) => {
+  const layout = '/layouts/noAuth'
+  res.render('signup', {layout});
 })
 
 router.post('/signup', (req, res) => {
   const {username, password} = req.body
 
-  // Check if 'user' and 'password' aren't empty
   if (username === '' || password === ''){
     res.render('signup', {errMsg: `Please fill all the fields`})
   }
-  // Check if 'user' doesn't exist already
   User.findOne({username})
   .then((result) => {
-    if (result) { // This user already exists 
+    if (result) {
      res.render('signup', {errMsg: `This user already exists`})
     } else {
       const hashedPassword = bcrypt.hashSync(password, 10)
@@ -43,9 +41,10 @@ router.post('/signup', (req, res) => {
   })
 })
 
-// Get login page
-router.get('/login', (req, res, next) => {
-  res.render('login', {errMsg: req.flash('error')});
+router.get('/login', checkForAuth, (req, res, next) => {
+  const layout = '/layouts/noAuth'
+
+  res.render('login', {errMsg: req.flash('error'), layout});
 })
 
 router.post('/login', passport.authenticate('local', {
