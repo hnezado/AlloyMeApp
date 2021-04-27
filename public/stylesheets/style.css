@@ -5,6 +5,10 @@ body {
   margin: 0;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -39,17 +43,20 @@ input {
 }
 
 button {
+  background-color: tan;
   font: 24px 'Josefin Sans', sans-serif;
-  width: 150px;
   height: 50px;
   border: none;
   margin: 10px 0;
   border-radius: 8px;
+  padding: 8px;
 }
 
 button:hover {
+  border-inline: 2px groove saddlebrown;
+  color: saddlebrown;
   font-weight: 600;
-  background-color: tan;
+  background-color: bisque;
 }
 
 #signup-form {
@@ -76,23 +83,6 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.admin-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 30px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
 }
 
 .knowledge-points {
@@ -180,7 +170,6 @@ button:hover {
 }
 
 .saved-comments button {
-  border: none;
   width: 40px;
   height: 40px;
   margin: 0 5px;
@@ -188,5 +177,274 @@ button:hover {
 
 .saved-comments img {
   width: 10px;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  text-align: center;
+  cursor: pointer;
+  padding: 18px;
+  width: 80%;
+}
+
+.accordion:hover {
+  padding: 16px;
+  border: 2px groove saddlebrown;
+  color: saddlebrown;
+  font-weight: 600;
+  background-color: bisque;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active {
+  padding: 16px;
+  border: 2px groove saddlebrown;
+  color: saddlebrown;
+  font-weight: 600;
+  background-color: bisque;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  background-color: bisque;
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-out;
+}
+
+.panel .admin-users-main-table {
+  font-weight: 600;
+  background-color: tan;
+  margin: 15px;
+  width: auto;
+  border: 2px ridge saddlebrown;
+  -webkit-box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+.panel .admin-users-main-table th {
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-align: center;
+  vertical-align: middle;
+  height: 60px;
+  padding: 0 20px;
+  border: 1px solid saddlebrown;
+}
+
+.panel .admin-users-main-table .border-sides {
+  border-left: 1px solid saddlebrown;
+  border-right: 1px solid saddlebrown;
+}
+
+.panel .admin-users-main-table .admin-user-tablerow {
+  background-color: peachpuff;
+}
+
+.panel .admin-users-main-table .admin-user-tablerow td {
+  padding: 10px 20px;
+  width: auto;
+}
+
+.panel .admin-users-main-table .admin-user-tablerow .admin-user-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+}
+
+.panel .admin-users-main-table .admin-user-tablerow .admin-user-checkbox input {
+  width: 20px;
+}
+
+.panel .admin-users-main-table .admin-user-tablerow .td-knowledge-points {
+  text-align: center;
+}
+
+.panel .admin-users-main-table .admin-user-tablerow img {
+  width: 10px;
+}
+
+.panel .admin-users-main-table .admin-user-tablerow button {
+  padding: 0;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+}
+
+.admin-form {
+  font-size: 1.8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 30px 0;
+  border-radius: 10px;
+  min-width: 220px;
+  padding: 10px;
+  background-color: peachpuff;
+  -webkit-box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+.admin-form p {
+  margin: 20px 0;
+}
+
+.admin-form .admin-new-user-checkbox {
+  vertical-align: middle;
+}
+
+.admin-form .checkbox-admin-new {
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.1rem;
+}
+
+.admin-form .checkbox-admin-new > * {
+  padding: 0 10px;
+}
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.modal .modal-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 10px;
+  border: 1px solid #888;
+  width: 50%;
+  /* Could be more or less, depending on screen size */
+  height: auto;
+}
+
+.modal .modal-content .close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  width: 30px;
+  height: auto;
+  text-align: center;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.modal .modal-content .close-modal:hover, .modal .modal-content .close-modal :focus {
+  color: tan;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal .modal-content .modal-edit-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100%;
+}
+
+.modal .modal-content .modal-edit-data .modal-edit-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40%;
+  min-height: 100%;
+  font-size: 1.5rem;
+}
+
+.modal .modal-content .modal-edit-data .modal-edit-label label {
+  text-align: end;
+  padding: 8px 10px;
+}
+
+.modal .modal-content .modal-edit-data .modal-edit-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 60%;
+}
+
+.modal .modal-content button {
+  margin-bottom: 0;
 }
 /*# sourceMappingURL=style.css.map */

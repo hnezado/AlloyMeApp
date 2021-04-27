@@ -24,7 +24,8 @@ mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: true
+    useFindAndModify: true,
+    useFindAndModify: false
   })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -103,6 +104,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use('/', require('./routes/index.routes'));
 app.use('/', require('./routes/auth.routes'));
 app.use('/', require('./routes/userData.routes'));
+app.use('/', require('./routes/elements.routes'));
 
 // Listener
 app.listen(process.env.PORT, () => {

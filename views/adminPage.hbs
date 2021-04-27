@@ -1,40 +1,152 @@
 <h1 class="title">Admin page</h1>
 
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Users
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        {{#each data}}<li><form action="///////" method="POST">{{username}}</form></li>{{/each}}
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Alloys
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
+<button class="accordion">Users</button>
+<div class="panel">
+  <table class="admin-users-main-table">
+    <th>Username</th><th>Admin</th><th>Knowledge<br>points</th><th>Saved<br>comments</th><th>Actions</th>
+  {{#each data as |item index|}}
+    <tr class="admin-user-tablerow">
+      <td>{{username}}</td>
+      <td class="border-sides">
+        <div class="admin-user-checkbox">
+          {{#if admin}}
+          <input type="checkbox" name="admin" onclick="return false;" checked>
+          {{else}}
+          <input type="checkbox" name="admin" onclick="return false;">
+          {{/if}}
+        </div>
+      </td>
+      <td class="td-knowledge-points">{{knowledgePoints}}</td>
+      <td class="border-sides">
+        <div> 
+          <ul>
+            {{#each comments}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      </td>
+      <td>
+        <button type="submit" class="admin-user-edit-modal-btn"><img src="../images/edit.png" alt="edit-icon"></button>
+        <button type="submit" class="admin-user-delete-modal-btn"><img src="../images/delete.png" alt="delete-icon"></button>
+      </td>
+    </tr>
 
+    {{!-- Modals --}}
+    <div class="admin-user-edit-modal modal">
+      <div class="modal-content">
+        <div class="close-modal-edit close-modal">&times;</div>
+        <form action="/user/edit/{{_id}}" method="POST">
+          <div class="modal-edit-data">
+            <div class="modal-edit-label">
+              <label for="username">Username: </label>
+              <label for="password">Password: </label>
+              <label for="admin">Admin: </label>
+              <label for="knowledgePoints">Knowledge points: </label>
+              <label for="comments">Saved comments: </label>
+            </div>
+            <div class="modal-edit-input">
+              <input type="text" name="username" value="{{username}}">
+              <input type="password" name="password" value="">
+              {{#if admin}}<input type="checkbox" name="admin" value=1 checked>
+              {{else}}<input type="checkbox" name="admin" value=1>{{/if}}
+              <input type="number" name="knowledgePoints" value="{{knowledgePoints}}">
+              {{#each comments}}
+                <input type="text" name="comments" value="{{this}}">
+              {{/each}}
+            </div>
+          </div>
+          <button type="submit">Edit user</button>
+        </form>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Tests
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
 
+    <div class="admin-user-delete-modal modal">
+      <div class="modal-content">
+        <div class="close-modal-delete close-modal">&times;</div>
+        <form action="/user/delete/{{_id}}" method="POST">
+          <div class="modal-edit-data">
+            <div class="modal-edit-label">
+              <label for="username">Username: </label>
+              <label for="password">Password: </label>
+              <label for="admin">Admin: </label>
+              <label for="knowledgePoints">Knowledge points: </label>
+              <label for="comments">Saved comments: </label>
+            </div>
+            <div class="modal-edit-input">
+              <input type="text" name="username" value="{{username}}" readonly>
+              <input type="password" name="password" value="" readonly>
+              {{#if admin}}<input type="checkbox" name="admin" value=1 onclick="return false;" checked>
+              {{else}}<input type="checkbox" name="admin" value=1 onclick="return false;">{{/if}}
+              <input type="number" name="knowledgePoints" value="{{knowledgePoints}}" readonly>
+              {{#each comments}}
+                <input type="text" name="comments" value="{{this}}" readonly>
+              {{/each}}
+            </div>
+          </div>
+          <button type="submit">Delete user</button>
+        </form>
       </div>
     </div>
-  </div>
+
+  {{/each}}
+  </table>
+
+  {{!-- New data form --}}
+  <form class="admin-form" action="/user/new" method="POST">
+    <p>New User</p>
+    <input type="text" name="username" id="admin-user-new-username" placeholder="User name">
+    <input type="password" name="password" placeholder="User password">
+    <div class="checkbox-admin-new">
+      Admin?
+      <input type="checkbox" name="admin" value=true>
+    </div>
+    <button type="submit">Create new user</button>
+  </form>
 </div>
+
+
+<button class="accordion">Alloys</button>
+<div class="panel">
+  {{!-- {{#each data}} --}}
+  <table class="admin-main-table">
+    <tr>
+      <td><label for="alloy-name">Alloy name: </label><input type="text" name="alloy-name" value={{name}}></td>
+      {{!-- {{#each data}} --}}
+      <td><label for="composed-by">Composed by: </label><input type="text" name="composed-by" value={{this}}></td>
+      {{!-- {{/each}} --}}
+    </tr>
+  </table>
+  {{!-- {{/each}} --}}
+
+  <form class="admin-form" action="/user/new" method="POST">
+    <h5>New Alloy</h5>
+    <input type="text" name="alloy-new" placeholder="New alloy name">
+    <input type="text" name="alloy-components" placeholder="New alloy components">
+    <button type="submit">Create new alloy</button>
+  </form>
+</div>
+
+
+<button class="accordion">Tests</button>
+<div class="panel">
+  {{#each data}}
+  <table class="admin-user-table">
+    <tr>
+      <td><label for="question">Question: </label><input type="text" name="question"></td>
+      <td><label for="options">Options: </label><input type="text" name="options"></td>
+      <td><label for="answer">Answer: </label><input type="text" name="answer"></td>
+    </tr>
+  </table>
+  {{/each}}
+
+  <form class="admin-form" action="/user/new" method="POST">
+    <h5>New test</h5>
+    <input type="text" name="question-new" placeholder="Insert new question">
+    <input type="text" name="password" placeholder="Insert answer options">
+    <button type="submit">Create test</button>
+  </form>
+</div>
+
+<script src="/javascripts/accScript.js"></script>
+<script src="/javascripts/modalScript.js"></script>

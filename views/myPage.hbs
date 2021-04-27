@@ -1,21 +1,6 @@
 <h1 class="title">{{data.username}}'s page</h1>
 
-<h2 class="subtitle">{{#if data.admin}} (admin){{else}} (member){{/if}}
-</h2>
-
-{{!-- {{#if data.admin}}
-<form class="admin-form" action="new/element" method="POST">
-  <input type="text" name="elementName" placeholder="Introduce a new element">
-  <button type="submit">Create</button>
-</form>
-
-{{#if createdMsg}}this{{/if}}
-
-<form class="admin-form" action="new/alloy" method="POST">
-  <input type="text" name="new-alloy" placeholder="Introduce a new alloy">
-  <button type="submit">Create</button>
-</form>
-{{/if}} --}}
+<h2 class="subtitle">{{#if data.admin}} (admin){{else}} (member){{/if}}</h2>
 
 <div class="knowledge-points">
   <p>Your knowledge points:</p>
