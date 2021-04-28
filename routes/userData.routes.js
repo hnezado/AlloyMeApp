@@ -94,14 +94,4 @@ router.post('/comments/delete/:index', (req, res) => {
   })
 })
 
-router.post('/alloy/new', (req, res) => {
-  Alloy.create(req.body)
-  .then((result) => {
-
-  })
-  .catch((err) => {
-    console.log(err)
-  })
-})
-
 module.exports = router;

@@ -1,14 +1,15 @@
 <h1 class="title">Admin page</h1>
 
-<button class="accordion">Users</button>
-<div class="panel">
-  <table class="admin-users-main-table">
+{{!-- //////////////////// Users //////////////////// --}}
+<button class="accordion-btn">Users</button>
+<div class="accordion-panel">
+  <table>
     <th>Username</th><th>Admin</th><th>Knowledge<br>points</th><th>Saved<br>comments</th><th>Actions</th>
-  {{#each data as |item index|}}
-    <tr class="admin-user-tablerow">
+  {{#each usersData}}
+    <tr>
       <td>{{username}}</td>
       <td class="border-sides">
-        <div class="admin-user-checkbox">
+        <div class="td-checkbox">
           {{#if admin}}
           <input type="checkbox" name="admin" onclick="return false;" checked>
           {{else}}
@@ -16,7 +17,7 @@
           {{/if}}
         </div>
       </td>
-      <td class="td-knowledge-points">{{knowledgePoints}}</td>
+      <td class="ap-users-table-kp">{{knowledgePoints}}</td>
       <td class="border-sides">
         <div> 
           <ul>
@@ -27,25 +28,25 @@
         </div>
       </td>
       <td>
-        <button type="submit" class="admin-user-edit-modal-btn"><img src="../images/edit.png" alt="edit-icon"></button>
-        <button type="submit" class="admin-user-delete-modal-btn"><img src="../images/delete.png" alt="delete-icon"></button>
+        <button type="button" class="event-ap-users-edit-btn"><img src="../images/edit.png" alt="edit-icon"></button>
+        <button type="button" class="event-ap-users-delete-btn"><img src="../images/delete.png" alt="delete-icon"></button>
       </td>
     </tr>
 
-    {{!-- Modals --}}
-    <div class="admin-user-edit-modal modal">
+    {{!-- /////////// Modals /////////// --}}
+    <div class="event-ap-users-edit-modal modal">
       <div class="modal-content">
-        <div class="close-modal-edit close-modal">&times;</div>
+        <div class="event-users-close-edit-modal-btn close-modal">&times;</div>
         <form action="/user/edit/{{_id}}" method="POST">
-          <div class="modal-edit-data">
-            <div class="modal-edit-label">
+          <div class="modal-data">
+            <div class="modal-label">
               <label for="username">Username: </label>
               <label for="password">Password: </label>
               <label for="admin">Admin: </label>
               <label for="knowledgePoints">Knowledge points: </label>
               <label for="comments">Saved comments: </label>
             </div>
-            <div class="modal-edit-input">
+            <div class="modal-input">
               <input type="text" name="username" value="{{username}}">
               <input type="password" name="password" value="">
               {{#if admin}}<input type="checkbox" name="admin" value=1 checked>
@@ -61,19 +62,19 @@
       </div>
     </div>
 
-    <div class="admin-user-delete-modal modal">
+    <div class="event-ap-users-delete-modal modal">
       <div class="modal-content">
-        <div class="close-modal-delete close-modal">&times;</div>
+        <div class="event-users-close-delete-modal-btn close-modal">&times;</div>
         <form action="/user/delete/{{_id}}" method="POST">
-          <div class="modal-edit-data">
-            <div class="modal-edit-label">
+          <div class="modal-data">
+            <div class="modal-label">
               <label for="username">Username: </label>
               <label for="password">Password: </label>
               <label for="admin">Admin: </label>
               <label for="knowledgePoints">Knowledge points: </label>
               <label for="comments">Saved comments: </label>
             </div>
-            <div class="modal-edit-input">
+            <div class="modal-input">
               <input type="text" name="username" value="{{username}}" readonly>
               <input type="password" name="password" value="" readonly>
               {{#if admin}}<input type="checkbox" name="admin" value=1 onclick="return false;" checked>
@@ -92,46 +93,101 @@
   {{/each}}
   </table>
 
-  {{!-- New data form --}}
+  {{!-- /////////// New user form /////////// --}}
   <form class="admin-form" action="/user/new" method="POST">
-    <p>New User</p>
-    <input type="text" name="username" id="admin-user-new-username" placeholder="User name">
+    <h4>New User</h4>
+    <input type="text" name="username" placeholder="User name">
     <input type="password" name="password" placeholder="User password">
-    <div class="checkbox-admin-new">
-      Admin?
+    <div class="ap-users-form-checkbox">
+      <h6>Admin?</h6>
       <input type="checkbox" name="admin" value=true>
     </div>
     <button type="submit">Create new user</button>
   </form>
 </div>
 
-
-<button class="accordion">Alloys</button>
-<div class="panel">
-  {{!-- {{#each data}} --}}
-  <table class="admin-main-table">
+{{!-- //////////////////// Alloys //////////////////// --}}
+<button class="accordion-btn">Alloys</button>
+<div class="accordion-panel">
+  <table>
+    <th>Alloy name</th><th>Composed by</th><th>Actions</th>
+  {{#each alloysData}}
     <tr>
-      <td><label for="alloy-name">Alloy name: </label><input type="text" name="alloy-name" value={{name}}></td>
-      {{!-- {{#each data}} --}}
-      <td><label for="composed-by">Composed by: </label><input type="text" name="composed-by" value={{this}}></td>
-      {{!-- {{/each}} --}}
+      <td>{{alloyName}}</td>
+      <td class="border-sides">
+        {{#each mixture}}
+        <li>{{this}}</li>
+        {{/each}}
+      </td>
+      <td>
+        <button type="button" class="event-ap-alloys-edit-btn"><img src="../images/edit.png" alt="edit-icon"></button>
+        <button type="button" class="event-ap-alloys-delete-btn"><img src="../images/delete.png" alt="delete-icon"></button>
+      </td>
     </tr>
-  </table>
-  {{!-- {{/each}} --}}
 
-  <form class="admin-form" action="/user/new" method="POST">
-    <h5>New Alloy</h5>
-    <input type="text" name="alloy-new" placeholder="New alloy name">
-    <input type="text" name="alloy-components" placeholder="New alloy components">
+    {{!-- /////////// Modals /////////// --}}
+    <div class="event-ap-alloys-edit-modal modal">
+      <div class="modal-content">
+        <div class="event-alloys-close-edit-modal-btn close-modal">&times;</div>
+        <form action="/alloy/edit/{{_id}}" method="POST">
+          <div class="modal-data">
+            <div class="modal-label">
+              <label for="alloyName">Alloy name: </label>
+              <label for="components">Composed by: </label>
+            </div>
+            <div class="event-alloys-edit-modal-input modal-input ">
+              <input type="text" name="alloyName" value="{{alloyName}}">
+              {{#each mixture}}
+                <input type="text" name="components" value="{{this}}">
+              {{/each}}
+            </div>
+          </div>
+          <button type="button" class="event-ap-alloys-edit-modal-add-component-btn">Add component</button>
+          <button type="submit">Edit alloy</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="event-ap-alloys-delete-modal modal">
+      <div class="modal-content">
+        <div class="event-alloys-close-delete-modal-btn close-modal">&times;</div>
+        <form action="/alloy/delete/{{_id}}" method="POST">
+          <div class="modal-data">
+            <div class="modal-label">
+              <label for="alloyName">Alloy name: </label>
+              <label for="components">Composed by: </label>
+            </div>
+            <div class="modal-input">
+              <input type="text" name="alloyName" value="{{alloyName}}" readonly>
+              {{#each mixture}}
+                <input type="text" name="components" value="{{this}}" readonly>
+              {{/each}}
+            </div>
+          </div>
+          <button type="submit">Delete alloy</button>
+        </form>
+      </div>
+    </div>
+
+  {{/each}}
+  </table>
+
+  {{!-- /////////// New alloy form /////////// --}}
+  <form class="admin-form" action="/alloy/new" method="POST">
+    <h4>New Alloy</h4>
+    <div id="ap-alloys-form-input-div">
+      <input type="text" name="alloyName" placeholder="Alloy name">
+    </div>
+    <button type="button" id="event-ap-alloys-add-component-form-btn">Add component</button>
     <button type="submit">Create new alloy</button>
   </form>
 </div>
 
-
-<button class="accordion">Tests</button>
-<div class="panel">
-  {{#each data}}
-  <table class="admin-user-table">
+{{!-- //////////////////// Tests //////////////////// --}}
+<button class="accordion-btn">Tests</button>
+<div class="accordion-panel">
+  {{#each testsData}}
+  <table>
     <tr>
       <td><label for="question">Question: </label><input type="text" name="question"></td>
       <td><label for="options">Options: </label><input type="text" name="options"></td>
@@ -149,4 +205,3 @@
 </div>
 
 <script src="/javascripts/accScript.js"></script>
-<script src="/javascripts/modalScript.js"></script>

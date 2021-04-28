@@ -1,34 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:500');
 
-@mixin flexCenter($direction){
+@mixin flexCenter($direction, $justify, $align){
   display: flex;
-  flex-direction: direction;
-  justify-content: center;
-  align-items: center;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 .nav-btn-left{
-  @include flexCenter(row);
-  
+  @include flexCenter(row, center, center);
+  margin-left: 20px;
 }
 
 .nav-btn-right{
-  @include flexCenter(row);
-}
-
-.atom-icon{
-  width: 80px;
+  @include flexCenter(row, center, center);
 }
 
 .nav-bar{
-  @include flexCenter(row);
+  @include flexCenter(row, center, center);
   justify-content: space-between;
   background-color: tan;
   width: 100%;
+  height: 100px;
 }
 
 .nav-btn{
-  text-align: center;
+  @include flexCenter(row, center, center);
   font-family: 'Oswald', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
@@ -38,12 +35,13 @@
   font-size: 20px;
   letter-spacing: 1px;
   position: relative;
-  display: inline-block;
   padding: 20px 20px;
+  width: 160px;
+  height: 40px;
   &:hover{
+    font-size: 0;
     background-color: bisque;
     color: saddlebrown;
-    padding: 20px 20px;
   }
   &:before{
     content: '';
@@ -56,6 +54,44 @@
   }
   &:hover:before{
     animation:in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform:scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animated-main-logo{
+  width: 80px;
+  &:hover{
+    animation: pulse 1.4s infinite ease-out;
+  }
+}
+.animate-btn{
+  img{
+    opacity: 0;
+    height: 0;
+  }
+  &:hover{
+    background-color: bisque;
+    color: saddlebrown;
+    span{
+      font-size: 0;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    img{
+      opacity: 1;
+      height: 30px;
+      margin-left: 12px;
+      transition: 0.2s;
+    }
   }
 }
 

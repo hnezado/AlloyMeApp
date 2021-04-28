@@ -3,26 +3,27 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: direction;
-          flex-direction: direction;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 20px;
 }
 
 .nav-btn-right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: direction;
-          flex-direction: direction;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -31,18 +32,14 @@
           align-items: center;
 }
 
-.atom-icon {
-  width: 80px;
-}
-
 .nav-bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: direction;
-          flex-direction: direction;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -54,10 +51,23 @@
           justify-content: space-between;
   background-color: tan;
   width: 100%;
+  height: 100px;
 }
 
 .nav-btn {
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: 'Oswald', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
@@ -67,14 +77,15 @@
   font-size: 20px;
   letter-spacing: 1px;
   position: relative;
-  display: inline-block;
   padding: 20px 20px;
+  width: 160px;
+  height: 40px;
 }
 
 .nav-btn:hover {
+  font-size: 0;
   background-color: bisque;
   color: saddlebrown;
-  padding: 20px 20px;
 }
 
 .nav-btn:before {
@@ -91,6 +102,70 @@
 .nav-btn:hover:before {
   -webkit-animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
           animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.animated-main-logo {
+  width: 80px;
+}
+
+.animated-main-logo:hover {
+  -webkit-animation: pulse 1.4s infinite ease-out;
+          animation: pulse 1.4s infinite ease-out;
+}
+
+.animate-btn img {
+  opacity: 0;
+  height: 0;
+}
+
+.animate-btn:hover {
+  background-color: bisque;
+  color: saddlebrown;
+}
+
+.animate-btn:hover span {
+  font-size: 0;
+  opacity: 0;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.animate-btn:hover img {
+  opacity: 1;
+  height: 30px;
+  margin-left: 12px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 @-webkit-keyframes in {

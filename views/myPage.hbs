@@ -1,34 +1,36 @@
 <h1 class="title">{{data.username}}'s page</h1>
 
-<h2 class="subtitle">{{#if data.admin}} (admin){{else}} (member){{/if}}</h2>
+<h2>{{#if data.admin}} (admin){{else}} (member){{/if}}</h2>
 
-<div class="knowledge-points">
-  <p>Your knowledge points:</p>
+<div class="mp-knowledge-points">
+  <h3>Your knowledge points:</h3>
   <p id="points-num">{{data.knowledgePoints}}</p>
 </div>
 
-<div class="saved-comments">
-  <p>Your saved comments:</p>
-  <table>
-    {{#each data.comments as |item index|}}
-    <tr>
-      <td><li>{{this}}</li></td>
-      <td>
-
-        <form action="/comments/edit/{{index}}" method="POST">
-          <input type="text" name="newComment" placeholder="Edit comment">
-          <button type="submit"><img src="../images/edit.png" alt="edit-icon"></button>
-        </form>
-        <form action="/comments/delete/{{index}}" method="POST">
-          <button type="submit"><img src="../images/delete.png" alt="delete-icon"></button>
-        </form>
-      </td>
-    </tr>
-    {{/each}}
-  </table>
+<div class="mp-comments-main">
+  <div class="mp-comments-div">
+    <h3>Your saved comments:</h3>
+    <table>
+      {{#each data.comments as |item index|}}
+      <tr>
+        <td class="border-sides"><li>{{this}}</li></td>
+        <td>
+          <div class="mp-comments-actions-div">
+            <form action="/comments/edit/{{index}}" method="POST">
+              <input type="text" name="newComment" placeholder="Edit comment">
+              <button type="submit"><img src="../images/edit.png" alt="edit-icon"></button>
+            </form>
+            <form action="/comments/delete/{{index}}" method="POST">
+              <button type="submit"><img src="../images/delete.png" alt="delete-icon"></button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+  </div>
+  <form id="mp-comments-form" action="comments/new" method="POST">
+    <input type="text" name="comments" placeholder="Introduce a new comment">
+    <button type="submit">Save</button>
+  </form>
 </div>
-
-<form class="comments-form" action="comments/new" method="POST">
-  <input type="text" name="comments" placeholder="Introduce a new comment">
-  <button type="submit">Save</button>
-</form>

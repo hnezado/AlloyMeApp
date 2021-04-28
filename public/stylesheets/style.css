@@ -28,8 +28,26 @@ main {
 .title {
   font-weight: 800;
   font-size: 3rem;
-  text-align: center;
   margin: 60px 0 40px;
+}
+
+h2 {
+  margin: 0 0 50px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+h4 {
+  margin: 10px 0;
+}
+
+h6 {
+  margin: 5px 0 0;
 }
 
 input {
@@ -39,7 +57,7 @@ input {
   height: 30px;
   background-color: antiquewhite;
   border: none;
-  margin: 5px 0;
+  margin: 5px;
 }
 
 button {
@@ -47,7 +65,7 @@ button {
   font: 24px 'Josefin Sans', sans-serif;
   height: 50px;
   border: none;
-  margin: 10px 0;
+  margin: 10px;
   border-radius: 8px;
   padding: 8px;
 }
@@ -57,6 +75,237 @@ button:hover {
   color: saddlebrown;
   font-weight: 600;
   background-color: bisque;
+}
+
+.accordion-btn {
+  text-align: center;
+  cursor: pointer;
+  padding: 18px;
+  width: 80%;
+}
+
+.accordion-btn:hover {
+  padding: 16px;
+  border: 2px groove saddlebrown;
+  color: saddlebrown;
+  font-weight: 600;
+  background-color: bisque;
+}
+
+.accordion-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  background-color: bisque;
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion-active {
+  padding: 16px;
+  border: 2px groove saddlebrown;
+  color: saddlebrown;
+  font-weight: 600;
+  background-color: antiquewhite;
+}
+
+table {
+  font-weight: 600;
+  margin: 10px;
+  border: 2px ridge saddlebrown;
+  -webkit-box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+table th {
+  background-color: tan;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-align: center;
+  vertical-align: middle;
+  height: 60px;
+  padding: 0 20px;
+  border: 1px solid saddlebrown;
+}
+
+table tr {
+  background-color: peachpuff;
+}
+
+table td {
+  padding: 10px 20px;
+  width: auto;
+}
+
+table td img {
+  width: 10px;
+}
+
+table td button {
+  padding: 0;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+}
+
+table td .td-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+table td .td-checkbox input {
+  width: 20px;
+}
+
+table .border-sides {
+  border-left: 1px solid saddlebrown;
+  border-right: 1px solid saddlebrown;
+}
+
+.admin-form {
+  font-size: 1.8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 30px 0;
+  border-radius: 10px;
+  min-width: 220px;
+  padding: 10px;
+  background-color: peachpuff;
+  -webkit-box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.modal .modal-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: peachpuff;
+  margin: 15% auto;
+  padding: 10px;
+  border: 1px solid #888;
+  width: 532px;
+  height: auto;
+  max-height: 80%;
+}
+
+.modal .modal-content .close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  width: 30px;
+  height: auto;
+  text-align: center;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.modal .modal-content .close-modal:hover, .modal .modal-content .close-modal :focus {
+  color: tan;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal .modal-content .modal-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100%;
+}
+
+.modal .modal-content .modal-data .modal-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40%;
+  min-height: 100%;
+  font-size: 1.5rem;
+}
+
+.modal .modal-content .modal-data .modal-label label {
+  text-align: end;
+  padding: 8px 10px;
+}
+
+.modal .modal-content .modal-data .modal-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 60%;
 }
 
 #signup-form {
@@ -85,7 +334,7 @@ button:hover {
           align-items: center;
 }
 
-.knowledge-points {
+.mp-knowledge-points {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,27 +342,29 @@ button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1.3rem;
-}
-
-.knowledge-points p {
-  text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 100px 0 0;
+  margin: 20px;
 }
 
-#points-num {
+.mp-knowledge-points #points-num {
   color: red;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 800;
   margin: 20px 0;
 }
 
-.saved-comments {
+.mp-comments-main {
+  margin: 20px 0;
+}
+
+.mp-comments-main .mp-comments-div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -121,145 +372,17 @@ button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   font-size: 1.3rem;
+  margin: 10px 0;
 }
 
-.saved-comments p {
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 100px 0 0;
-}
-
-.saved-comments table {
-  margin: 30px;
-}
-
-.saved-comments tr {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.saved-comments td {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 5px 20px;
-}
-
-.saved-comments input {
-  width: 120px;
-}
-
-.saved-comments button {
-  width: 40px;
-  height: 40px;
-  margin: 0 5px;
-}
-
-.saved-comments img {
-  width: 10px;
-}
-
-/* Style the buttons that are used to open and close the accordion panel */
-.accordion {
-  text-align: center;
-  cursor: pointer;
-  padding: 18px;
-  width: 80%;
-}
-
-.accordion:hover {
-  padding: 16px;
-  border: 2px groove saddlebrown;
-  color: saddlebrown;
-  font-weight: 600;
-  background-color: bisque;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active {
-  padding: 16px;
-  border: 2px groove saddlebrown;
-  color: saddlebrown;
-  font-weight: 600;
-  background-color: bisque;
-}
-
-/* Style the accordion panel. Note: hidden by default */
-.panel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 80%;
-  background-color: bisque;
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  -webkit-transition: max-height 0.2s ease-out;
-  transition: max-height 0.2s ease-out;
-}
-
-.panel .admin-users-main-table {
-  font-weight: 600;
-  background-color: tan;
-  margin: 15px;
-  width: auto;
-  border: 2px ridge saddlebrown;
-  -webkit-box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
-}
-
-.panel .admin-users-main-table th {
-  font-weight: 800;
-  font-size: 1.2rem;
-  text-align: center;
-  vertical-align: middle;
-  height: 60px;
-  padding: 0 20px;
-  border: 1px solid saddlebrown;
-}
-
-.panel .admin-users-main-table .border-sides {
-  border-left: 1px solid saddlebrown;
-  border-right: 1px solid saddlebrown;
-}
-
-.panel .admin-users-main-table .admin-user-tablerow {
-  background-color: peachpuff;
-}
-
-.panel .admin-users-main-table .admin-user-tablerow td {
-  padding: 10px 20px;
-  width: auto;
-}
-
-.panel .admin-users-main-table .admin-user-tablerow .admin-user-checkbox {
+.mp-comments-main .mp-comments-div .mp-comments-actions-div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -273,59 +396,33 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: auto;
 }
 
-.panel .admin-users-main-table .admin-user-tablerow .admin-user-checkbox input {
-  width: 20px;
-}
-
-.panel .admin-users-main-table .admin-user-tablerow .td-knowledge-points {
-  text-align: center;
-}
-
-.panel .admin-users-main-table .admin-user-tablerow img {
-  width: 10px;
-}
-
-.panel .admin-users-main-table .admin-user-tablerow button {
-  padding: 0;
-  text-align: center;
-  height: 30px;
-  width: 30px;
-}
-
-.admin-form {
-  font-size: 1.8rem;
+.mp-comments-main #mp-comments-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 30px 0;
-  border-radius: 10px;
-  min-width: 220px;
-  padding: 10px;
-  background-color: peachpuff;
-  -webkit-box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.5);
 }
 
-.admin-form p {
-  margin: 20px 0;
-}
-
-.admin-form .admin-new-user-checkbox {
-  vertical-align: middle;
-}
-
-.admin-form .checkbox-admin-new {
+.mp-comments-main #mp-comments-form button {
   width: 100px;
+}
+
+.ap-users-table-kp {
+  text-align: center;
+}
+
+.ap-users-form-checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -339,80 +436,16 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100px;
   font-size: 1.1rem;
 }
 
-.admin-form .checkbox-admin-new > * {
+.ap-users-form-checkbox input {
+  width: 40px;
   padding: 0 10px;
 }
 
-.modal {
-  display: none;
-  /* Hidden by default */
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: black;
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
-  -webkit-transition: 1s;
-  transition: 1s;
-}
-
-.modal .modal-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #fefefe;
-  margin: 15% auto;
-  /* 15% from the top and centered */
-  padding: 10px;
-  border: 1px solid #888;
-  width: 50%;
-  /* Could be more or less, depending on screen size */
-  height: auto;
-}
-
-.modal .modal-content .close-modal {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  width: 30px;
-  height: auto;
-  text-align: center;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-.modal .modal-content .close-modal:hover, .modal .modal-content .close-modal :focus {
-  color: tan;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal .modal-content .modal-edit-data {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: 100%;
-}
-
-.modal .modal-content .modal-edit-data .modal-edit-label {
+#ap-alloys-form-input-div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -420,31 +453,11 @@ button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 40%;
-  min-height: 100%;
-  font-size: 1.5rem;
-}
-
-.modal .modal-content .modal-edit-data .modal-edit-label label {
-  text-align: end;
-  padding: 8px 10px;
-}
-
-.modal .modal-content .modal-edit-data .modal-edit-input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  width: 60%;
-}
-
-.modal .modal-content button {
-  margin-bottom: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=style.css.map */

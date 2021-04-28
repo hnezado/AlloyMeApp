@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const chalk = require('chalk')
+const pt = require('periodic-table');
+
+const allElements = pt.all()
 
 const User = require('../models/User.model');
+const AlloyModel = require('../models/Alloy.model');
 
 const checkForAuth = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -44,8 +48,15 @@ router.get('/my-page', checkForAuth, (req, res, next) => {
 router.get('/admin-page', checkForAuth, (req, res, next) => {
   const layout = '/layouts/adminLayout'
   User.find()
-  .then((result) => {
-    res.render('adminPage', {data: result, layout})
+  .then((usersResult) => {
+    AlloyModel.find()
+    .then((alloysResult) => {
+      res.render('adminPage', {
+        usersData: usersResult,
+        alloysData: alloysResult,
+        elements: allElements, 
+        layout})
+    })
   })
   .catch((err) => {
     console.log(err)

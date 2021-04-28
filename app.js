@@ -105,6 +105,7 @@ app.use('/', require('./routes/index.routes'));
 app.use('/', require('./routes/auth.routes'));
 app.use('/', require('./routes/userData.routes'));
 app.use('/', require('./routes/elements.routes'));
+app.use('/', require('./routes/alloyData.routes'));
 
 // Listener
 app.listen(process.env.PORT, () => {
