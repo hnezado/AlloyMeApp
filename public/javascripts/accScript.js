@@ -68,7 +68,6 @@ const closeAlloyEditModalBtnArray = document.querySelectorAll('.event-alloys-clo
 const closeAlloyDeleteModalBtnArray = document.querySelectorAll('.event-alloys-close-delete-modal-btn')
 const alloyEditModalAddComponentBtnArray = document.querySelectorAll('.event-ap-alloys-edit-modal-add-component-btn')
 const alloyEditModalInputArray = document.querySelectorAll('.event-alloys-edit-modal-input')
-console.log(alloyEditModalAddComponentBtnArray, alloyEditModalInputArray)
 addEventListeners(closeAlloyEditModalBtnArray, 'alloy-hide-edit-modal')
 addEventListeners(closeAlloyDeleteModalBtnArray, 'alloy-hide-delete-modal')
 addEventListeners(alloyEditModalAddComponentBtnArray, 'alloy-add-component-edit-modal')
