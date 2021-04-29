@@ -22,7 +22,7 @@ const User = require('./models/User.model')
 
 // DB config
 mongoose
-  .connect(`${process.env.DB_URL}`, {
+  .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tpwjp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: true,
