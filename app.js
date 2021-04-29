@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
 
+
 // Step 2: Import installed packages (to use passport and more)
 const bcrypt = require('bcrypt')
 const flash = require('connect-flash')
