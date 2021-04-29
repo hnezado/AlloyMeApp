@@ -17,8 +17,9 @@
 }
 
 .nav-bar{
-  @include flexCenter(row, center, center);
-  justify-content: space-between;
+  @include flexCenter(row, space-between, center);
+  position: fixed;
+  z-index: 1;
   background-color: #5485A1;
   width: 100%;
   height: 100px;

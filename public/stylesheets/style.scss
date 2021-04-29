@@ -32,20 +32,20 @@ main{
 .footer{
   position: fixed;
   width: 100%;
-  height: 100px;
+  height: 50px;
   bottom: 0;
   background-color: #5485A1;
 }
 .footer-sign{
   color: black;
   position: fixed;
-  bottom: 40px;
+  bottom: 20px;
   right: 40px;
 }
 .title{
   font-weight: 800;
   font-size: 3rem;
-  margin: 60px 0 40px;
+  margin: 160px 0 40px;
 }
 h2{
   margin: 0 0 50px;
@@ -100,9 +100,8 @@ button{
   }
 }
 .accordion-panel{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexCenter(column, null, center);
+  margin-bottom: 50px;
   width: 80%;
   background-color: #B2C9D7;
   padding: 0 18px;
@@ -282,6 +281,7 @@ table {
   }
   #mp-comments-form{
     @include flexCenter(row, center, center);
+    margin-bottom: 50px;
     button{
       width: 100px;
     }
