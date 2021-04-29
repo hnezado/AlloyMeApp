@@ -186,20 +186,20 @@
 {{!-- //////////////////// Tests //////////////////// --}}
 <button class="accordion-btn">Tests</button>
 <div class="accordion-panel">
-  {{#each testsData}}
   <table>
+    <th>Question</th><th>Answer</th>
+  {{#each testsData}}
     <tr>
-      <td><label for="question">Question: </label><input type="text" name="question"></td>
-      <td><label for="options">Options: </label><input type="text" name="options"></td>
-      <td><label for="answer">Answer: </label><input type="text" name="answer"></td>
+      <td>{{question}}</td>
+      <td>{{answer}}</td>
     </tr>
-  </table>
   {{/each}}
+  </table>
 
-  <form class="admin-form" action="/user/new" method="POST">
+  <form class="admin-form" action="/test/new" method="POST">
     <h5>New test</h5>
-    <input type="text" name="question-new" placeholder="Insert new question">
-    <input type="text" name="password" placeholder="Insert answer options">
+    <input type="text" name="question" placeholder="Insert new question">
+    <input type="text" name="answer" placeholder="Insert answer">
     <button type="submit">Create test</button>
   </form>
 </div>

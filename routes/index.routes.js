@@ -6,7 +6,8 @@ const pt = require('periodic-table');
 const allElements = pt.all()
 
 const User = require('../models/User.model');
-const AlloyModel = require('../models/Alloy.model');
+const Alloy = require('../models/Alloy.model');
+const Test = require('../models/Test.model');
 
 const checkForAuth = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -46,21 +47,29 @@ router.get('/my-page', checkForAuth, (req, res, next) => {
 });
 
 router.get('/admin-page', checkForAuth, (req, res, next) => {
-  const layout = '/layouts/adminLayout'
-  User.find()
-  .then((usersResult) => {
-    AlloyModel.find()
-    .then((alloysResult) => {
-      res.render('adminPage', {
-        usersData: usersResult,
-        alloysData: alloysResult,
-        elements: allElements, 
-        layout})
+  if (req.user.admin){
+    const layout = '/layouts/adminLayout'
+    User.find()
+    .then((usersResult) => {
+      Alloy.find()
+      .then((alloysResult) => {
+        Test.find()
+        .then((testsResult) => {
+          res.render('adminPage', {
+            usersData: usersResult,
+            alloysData: alloysResult,
+            testsData: testsResult,
+            elements: allElements, 
+            layout})
+        })
+      })
     })
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+    .catch((err) => {
+      console.log(err)
+    })
+  } else {
+    res.redirect('/my-page')
+  }
 })
 
 module.exports = router;

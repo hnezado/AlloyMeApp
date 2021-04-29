@@ -1,0 +1,12 @@
+<h1 class="title">Test page</h1>
+
+<form id="signup-form" action="/answer/{{data._id}}" method="POST">
+  <h3>{{data.question}}</h3>
+  <input type="text" name="answer" placeholder="Input your answer">
+  <button type="submit">Send answer</button>
+
+</form>
+
+{{#if correct}}
+  <p>{{correct}}</p>
+{{/if}}
