@@ -108,6 +108,6 @@ app.use('/', require('./routes/elements.routes'));
 app.use('/', require('./routes/alloyData.routes'));
 
 // Listener
-app.listen(process.env.PORT, () => {
-  console.log(`Listening on http://localhost:${process.env.PORT}`);
+app.listen(process.env.PORT||3000, () => {
+  console.log(`Listening`);
 });
