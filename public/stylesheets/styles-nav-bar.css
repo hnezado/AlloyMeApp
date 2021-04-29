@@ -49,7 +49,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: tan;
+  background-color: #5485A1;
   width: 100%;
   height: 100px;
 }
@@ -84,8 +84,8 @@
 
 .nav-btn:hover {
   font-size: 0;
-  background-color: bisque;
-  color: saddlebrown;
+  background-color: #B2C9D7;
+  color: #38586B;
 }
 
 .nav-btn:before {
@@ -93,7 +93,7 @@
   position: absolute;
   width: 100%;
   height: 3px;
-  background: black;
+  background: #38586B;
   top: 100%;
   -webkit-animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
           animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
@@ -149,8 +149,8 @@
 }
 
 .animate-btn:hover {
-  background-color: bisque;
-  color: saddlebrown;
+  background-color: #B2C9D7;
+  color: #38586B;
 }
 
 .animate-btn:hover span {

@@ -9,15 +9,35 @@
 
 //////////* General styles *//////////
 body{
-  background-color: wheat;
+  background-color: #cad5db;
   font: 14px "Josefin Sans", Helvetica, Arial, sans-serif;
-  margin: 0;  
+  margin: 0;
+  height: 100vh;
   &::-webkit-scrollbar {
     display: none;
   }
 }
 main{
   @include flexCenter(column, center, center);
+}
+.bg-main{
+  img{
+    width: 100%;
+    height: 100%;
+  };
+}
+.footer{
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  background-color: #5485A1;
+}
+.footer-sign{
+  color: black;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
 }
 .title{
   font-weight: 800;
@@ -44,12 +64,12 @@ input{
   text-align: center;
   width: 250px;
   height: 30px;
-  background-color: antiquewhite;
+  background-color: #abbfca;
   border: none;
   margin: 5px;
 }
 button{
-  background-color: tan;
+  background-color: #729CB5;
   font: 24px 'Josefin Sans', sans-serif;
   height: 50px;
   border: none;
@@ -57,10 +77,10 @@ button{
   border-radius: 8px;
   padding: 8px;
   &:hover{
-    border-inline: 2px groove saddlebrown;
-    color: saddlebrown;
+    border-inline: 2px groove #38586B;
+    color: black;
     font-weight: 600;
-    background-color: bisque;
+    background-color: #5E8EAB;
   }
 }
 .accordion-btn {
@@ -70,10 +90,10 @@ button{
   width: 80%;
   &:hover{
     padding: 16px;
-    border: 2px groove saddlebrown;
-    color: saddlebrown;
+    border: 2px groove #38586B;
+    color: black;
     font-weight: 600;
-    background-color: bisque;
+    background-color: #83A8BE;
   }
 }
 .accordion-panel{
@@ -81,7 +101,7 @@ button{
   flex-direction: column;
   align-items: center;
   width: 80%;
-  background-color: bisque;
+  background-color: #B2C9D7;
   padding: 0 18px;
   max-height: 0;
   // height: auto;
@@ -90,30 +110,30 @@ button{
 }
 .accordion-active{
   padding: 16px;
-  border: 2px groove saddlebrown;
-  color: saddlebrown;
+  border: 2px groove #38586B;
+  color: black;
   font-weight: 600;
-  background-color: antiquewhite;
+  background-color: #b1e1ff;
 }
 table {
   font-weight: 600;
   margin: 10px;
-  border: 2px ridge saddlebrown;
+  border: 2px ridge #38586B;
   -webkit-box-shadow: 0px 10px 10px 2px rgba(0,0,0,0.5);
   -moz-box-shadow: 0px 10px 10px 2px rgba(0,0,0,0.5);
   box-shadow: 0px 10px 10px 2px rgba(0,0,0,0.5);
   th{
-    background-color: tan;
+    background-color: #5E8EAB;
     font-weight: 800;
     font-size: 1.2rem;
     text-align: center;
     vertical-align: middle;
     height: 60px;
     padding: 0 20px;
-    border: 1px solid saddlebrown;
+    border: 1px solid #38586B;
   }
   tr{
-    background-color: peachpuff;
+    background-color: #90b7cf;
   }
   td{
     padding: 10px 20px;
@@ -133,10 +153,13 @@ table {
         width: 20px;
       }
     }
+    .ap-users-table-td-actions{
+      min-width: 105px;
+    }
   }
   .border-sides{
-    border-left: 1px solid saddlebrown;
-    border-right: 1px solid saddlebrown;
+    border-left: 1px solid #38586B;
+    border-right: 1px solid #38586B;
   }
 }
 .admin-form{
@@ -148,7 +171,7 @@ table {
   border-radius: 10px;
   min-width: 220px;
   padding: 10px;
-  background-color: peachpuff;
+  background-color: #90b7cf;
   -webkit-box-shadow: 0px 10px 10px 2px rgba(0,0,0,0.5);
   -moz-box-shadow: 0px 10px 10px 2px rgba(0,0,0,0.5);
   box-shadow: 0px 10px 10px 2px rgba(0,0,0,0.5);
@@ -170,15 +193,15 @@ table {
   }
   .modal-content {
     @include flexCenter(column, center, center);
-    background-color: peachpuff;
+    background-color: #90b7cf;
     margin: 15% auto;
     padding: 10px;
-    border: 1px solid #888;
+    border: 1px solid #38586B;
     width: 532px;
     height: auto;
     max-height: 80%;
     .close-modal {
-      color: #aaa;
+      color: #38586B;
       float: right;
       font-size: 28px;
       font-weight: bold;
@@ -187,7 +210,7 @@ table {
       text-align: center;
       align-self: flex-end;
       &:hover, :focus{
-        color: tan;
+        color: #5E8EAB;
         text-decoration: none;
         cursor: pointer;
       }
@@ -226,13 +249,19 @@ table {
 }
 
 //////////* Personal page *//////////
+.mp-elements-table-symbol{
+  text-align: center;
+}
+.mp-elements-table-aNum{
+  text-align: center;
+}
 .mp-knowledge-points{
   @include flexCenter(column, center, center);
     font-size: 1.5rem;
     font-weight: 600;
     margin: 20px;
   #points-num{
-    color: red;
+    color: #5485A1;
     font-size: 2rem;
     font-weight: 800;
     margin: 20px 0;

@@ -14,14 +14,17 @@ const checkForAuth = (req, res, next) => {
 }
 
 router.get('/test', checkForAuth, (req, res) => {
-  layout = '/layouts/auth'
-  Test.find()
-  .then((result) => {
-    const randomNum = Math.floor(Math.random()*result.length)    
-    let testId = result[randomNum]._id
-    Test.findById(testId)
+  User.findById(req.user._id)
+  .then((userResult) => {
+    layout = userResult.admin ? '/layouts/adminLayout' : '/layouts/auth' 
+    Test.find()
     .then((result) => {
-      res.render('test', {data: result, layout})
+      const randomNum = Math.floor(Math.random()*result.length)    
+      let testId = result[randomNum]._id
+      Test.findById(testId)
+      .then((result) => {
+        res.render('test', {data: result, layout})
+      })
     })
   })
   .catch((err) => {
@@ -32,13 +35,13 @@ router.get('/test', checkForAuth, (req, res) => {
 router.post('/answer/:_id', (req, res) => {
   layout = '/layouts/auth'
   let questionId= req.params._id
-  let answer = req.body.answer
+  let answer = req.body.answer.toLowerCase()
   Test.findById(questionId)
   .then((testResult) => {
     if (testResult.answer === answer) {
       User.findById(req.user._id)
         .then((user) =>{
-          User.findByIdAndUpdate(req.user._id, {knowledgePoints: user.knowledgePoints + 3})
+          User.findByIdAndUpdate(req.user._id, {knowledgePoints: user.knowledgePoints + 5})
             .then((userResult) => {
               res.redirect('/my-page')
           })
@@ -53,7 +56,8 @@ router.post('/answer/:_id', (req, res) => {
 })
 
 router.post('/test/new', (req, res) => {
-  Test.create(req.body)
+  const {question, answer} = req.body
+  Test.create({question, answer: answer.toLowerCase()})
   .then((result) => {
     res.redirect('/admin-page')
   })

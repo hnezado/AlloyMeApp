@@ -33,12 +33,19 @@ router.get('/', (req, res, next) => {
 router.get('/my-page', checkForAuth, (req, res, next) => {
   const layout = req.user.admin ? '/layouts/adminLayout' : '/layouts/auth'
   User.findById(req.user._id)
-  .then((result) => {
+  .then((userResult) => {
     if (req.user.admin){
       res.redirect('/admin-page')
       next()
     } else {
-      res.render('myPage', {data: result, layout});
+      Alloy.find()
+      .then((alloysResult) => {
+        res.render('myPage', {
+          userData: userResult, 
+          alloysData: alloysResult, 
+          elementsData: allElements,
+          layout});
+      })
     }
   })
   .catch((err) => {

@@ -28,8 +28,10 @@
         </div>
       </td>
       <td>
-        <button type="button" class="event-ap-users-edit-btn"><img src="../images/edit.png" alt="edit-icon"></button>
-        <button type="button" class="event-ap-users-delete-btn"><img src="../images/delete.png" alt="delete-icon"></button>
+        <div class="ap-users-table-td-actions">
+          <button type="button" class="event-ap-users-edit-btn"><img src="../images/edit.png" alt="edit-icon"></button>
+          <button type="button" class="event-ap-users-delete-btn"><img src="../images/delete.png" alt="delete-icon"></button>
+        </div>
       </td>
     </tr>
 
@@ -187,11 +189,16 @@
 <button class="accordion-btn">Tests</button>
 <div class="accordion-panel">
   <table>
-    <th>Question</th><th>Answer</th>
+    <th>Question</th><th>Answer</th><th>Actions</th>
   {{#each testsData}}
     <tr>
       <td>{{question}}</td>
       <td>{{answer}}</td>
+      <td>
+        <form action="/test/delete/{{_id}}" method="POST">
+          <button type="submit"><img src="../images/delete.png" alt="delete-icon"></button>
+        </form>
+      </td>
     </tr>
   {{/each}}
   </table>

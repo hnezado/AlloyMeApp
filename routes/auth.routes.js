@@ -19,15 +19,15 @@ router.get('/signup', checkForAuth, (req, res, next) => {
 })
 
 router.post('/signup', (req, res) => {
+  const layout = '/layouts/noAuth'
   const {username, password} = req.body
-
   if (username === '' || password === ''){
-    res.render('signup', {errMsg: `Please fill all the fields`})
+    res.render('signup', {errMsg: `Please fill all the fields`, layout})
   }
   User.findOne({username})
   .then((result) => {
     if (result) {
-     res.render('signup', {errMsg: `This user already exists`})
+      res.render('signup', {errMsg: `This user already exists`, layout})
     } else {
       const hashedPassword = bcrypt.hashSync(password, 10)
       User.create({username: username, password: hashedPassword})
@@ -41,9 +41,8 @@ router.post('/signup', (req, res) => {
   })
 })
 
-router.get('/login', checkForAuth, (req, res, next) => {
+router.get('/login', (req, res, next) => {
   const layout = '/layouts/noAuth'
-
   res.render('login', {errMsg: req.flash('error'), layout});
 })
 

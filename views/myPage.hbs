@@ -1,17 +1,51 @@
-<h1 class="title">{{data.username}}'s page</h1>
+<h1 class="title">{{userData.username}}'s page</h1>
 
-<h2>{{#if data.admin}} (admin){{else}} (member){{/if}}</h2>
+<h2>{{#if userData.admin}} (admin){{else}} (member){{/if}}</h2>
+
+<button class="accordion-btn">Elements</button>
+<div class="accordion-panel">
+  <table>
+    <th>Element name</th><th>Symbol</th><th>Atomic number</th><th>Atomic mass</th><th>Type</th>
+  {{#each elementsData}}
+    <tr>
+      <td>{{name}}</td>
+      <td class="mp-elements-table-symbol border-sides">{{symbol}}</td>
+      <td class="mp-elements-table-aNum">{{atomicNumber}}</td>
+      <td class="border-sides">{{atomicMass}}</td>
+      <td>{{groupBlock}}</td>
+    </tr>
+  {{/each}}
+  </table>
+</div>
+
+
+<button class="accordion-btn">Alloys</button>
+<div class="accordion-panel">
+  <table>
+    <th>Alloy name</th><th>Composed by</th>
+  {{#each alloysData}}
+    <tr>
+      <td>{{alloyName}}</td>
+      <td class="border-sides">
+        {{#each mixture}}
+        <li>{{this}}</li>
+        {{/each}}
+      </td>
+    </tr>
+  {{/each}}
+  </table>
+</div>
 
 <div class="mp-knowledge-points">
   <h3>Your knowledge points:</h3>
-  <p id="points-num">{{data.knowledgePoints}}</p>
+  <p id="points-num">{{userData.knowledgePoints}}</p>
 </div>
 
 <div class="mp-comments-main">
   <div class="mp-comments-div">
     <h3>Your saved comments:</h3>
     <table>
-      {{#each data.comments as |item index|}}
+      {{#each userData.comments as |item index|}}
       <tr>
         <td class="border-sides"><li>{{this}}</li></td>
         <td>
@@ -34,3 +68,5 @@
     <button type="submit">Save</button>
   </form>
 </div>
+
+<script src="/javascripts/accScript.js"></script>

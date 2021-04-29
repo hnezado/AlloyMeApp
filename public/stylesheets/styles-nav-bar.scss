@@ -19,7 +19,7 @@
 .nav-bar{
   @include flexCenter(row, center, center);
   justify-content: space-between;
-  background-color: tan;
+  background-color: #5485A1;
   width: 100%;
   height: 100px;
 }
@@ -40,15 +40,15 @@
   height: 40px;
   &:hover{
     font-size: 0;
-    background-color: bisque;
-    color: saddlebrown;
+    background-color: #B2C9D7;
+    color: #38586B;
   }
   &:before{
     content: '';
     position: absolute;
     width: 100%;
     height: 3px;
-    background: black;
+    background: #38586B;
     top: 100%;
     animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
   }
@@ -79,8 +79,8 @@
     height: 0;
   }
   &:hover{
-    background-color: bisque;
-    color: saddlebrown;
+    background-color: #B2C9D7;
+    color: #38586B;
     span{
       font-size: 0;
       opacity: 0;
