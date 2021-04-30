@@ -26,11 +26,11 @@ const addEventListeners = (array, mode)=>{
       } else if (mode === 'alloy-hide-delete-modal'){
         alloyDeleteModalArray[i].style.display = 'none'
       } else if (mode === 'alloy-add-component-form'){
-        alloyFormInputDiv.innerHTML += `<input type="text" name="components" placeholder="Component name"></input>`
+        alloyFormInputDiv.innerHTML += `<input type="text" name="components" placeholder="Component name" oninput={changeInput(this)}>`
         const panel = document.querySelectorAll('.accordion-panel')[1];
         panel.style.maxHeight = panel.scrollHeight + 'px';
       } else if (mode === 'alloy-add-component-edit-modal'){
-        alloyEditModalInputArray[i].innerHTML += `<input type="text" name="components" placeholder="Component name"></input>`
+        alloyEditModalInputArray[i].innerHTML += `<input type="text" name="components" placeholder="Introduce name" oninput={changeInput(this)}>`
         alloyEditModalArray[i].style.maxHeight = alloyEditModalArray[i].scrollHeight + 'px';
       }
     })
@@ -76,3 +76,34 @@ addEventListeners(alloyEditModalAddComponentBtnArray, 'alloy-add-component-edit-
 const alloyAddComponentFormBtn = [document.querySelector('#event-ap-alloys-add-component-form-btn')]
 const alloyFormInputDiv = document.querySelector('#ap-alloys-form-input-div')
 addEventListeners(alloyAddComponentFormBtn, 'alloy-add-component-form')
+
+// Modal form functionality //
+const submitEditForm = (event)=>{
+  const id = event.target.getAttribute('data')
+  const inputsDiv = document.getElementsByClassName(id)[0]
+  const inputsDivChildren = inputsDiv.querySelectorAll("*")
+  let alloyName = ''
+  const components = []
+  inputsDivChildren.forEach((input)=>{
+    if(input.getAttribute('name') === 'alloyName'){
+      alloyName = input.getAttribute('value')
+    } else if(input.getAttribute('name') === 'components'){
+      components.push(input.getAttribute('value'))
+    }
+  })
+  const fakeBody = {alloyName, components}
+  axios({
+    method: 'POST',
+    url: '/alloy/edit/' + id,
+    data: fakeBody
+  })
+  .then((result)=>{
+    location.reload()
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+const changeInput = (thisInput)=>{
+  thisInput.setAttribute('value', thisInput.value)
+}

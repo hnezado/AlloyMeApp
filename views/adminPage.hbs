@@ -131,22 +131,20 @@
     <div class="event-ap-alloys-edit-modal modal">
       <div class="modal-content">
         <div class="event-alloys-close-edit-modal-btn close-modal">&times;</div>
-        <form action="/alloy/edit/{{_id}}" method="POST">
-          <div class="modal-data">
-            <div class="modal-label">
-              <label for="alloyName">Alloy name: </label>
-              <label for="components">Composed by: </label>
-            </div>
-            <div class="event-alloys-edit-modal-input modal-input ">
-              <input type="text" name="alloyName" value="{{alloyName}}">
-              {{#each mixture}}
-                <input type="text" name="components" value="{{this}}">
-              {{/each}}
-            </div>
+        <div class="modal-data">
+          <div class="modal-label">
+            <label for="alloyName">Alloy name: </label>
+            <label for="components">Composed by: </label>
           </div>
-          <button type="button" class="event-ap-alloys-edit-modal-add-component-btn">Add component</button>
-          <button type="submit">Edit alloy</button>
-        </form>
+          <div class="event-alloys-edit-modal-input modal-input {{_id}}">
+            <input type="text" name="alloyName" value="{{alloyName}}" oninput={changeInput(this)}>
+            {{#each mixture}}
+            <input type="text" name="components" value={{this}} oninput={changeInput(this)}>
+            {{/each}}
+          </div>
+        </div>
+        <button type="button" class="event-ap-alloys-edit-modal-add-component-btn">Add component</button>
+        <button type="button" data="{{_id}}" onclick={submitEditForm(event)}>Edit alloy</button>
       </div>
     </div>
 
@@ -178,7 +176,7 @@
   <form class="admin-form" action="/alloy/new" method="POST">
     <h4>New Alloy</h4>
     <div id="ap-alloys-form-input-div">
-      <input type="text" name="alloyName" placeholder="Alloy name">
+      <input type="text" name="alloyName" placeholder="Alloy name" oninput={changeInput(this)}>
     </div>
     <button type="button" id="event-ap-alloys-add-component-form-btn">Add component</button>
     <button type="submit">Create new alloy</button>

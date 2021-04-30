@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
 
-
 // Step 2: Import installed packages (to use passport and more)
 const bcrypt = require('bcrypt')
 const flash = require('connect-flash')
@@ -41,6 +40,7 @@ const app = express();
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Step 3: Config middle-ware "express-session"
@@ -75,12 +75,11 @@ passport.use(new LocalStrategy({
   passwordField: 'password',
   passReqToCallback: true
 }, (req, username, password, next) => {
-  User.findOne({username})
+  User.findOne({username: (username.toLowerCase())})
   .then((user) => {
     if (!user){ // If the user doesn't exist
       return next(null, false, {message: 'Incorrect username'})
     }
-
     if (!bcrypt.compareSync(password, user.password)){ // If the password is correct
       return next(null, false, {message: 'Incorrect password'})
     }

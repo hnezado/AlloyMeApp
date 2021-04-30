@@ -34,6 +34,7 @@ router.get('/my-page', checkForAuth, (req, res, next) => {
   const layout = req.user.admin ? '/layouts/adminLayout' : '/layouts/auth'
   User.findById(req.user._id)
   .then((userResult) => {
+    const fixedName = userResult.username[0].toUpperCase()+userResult.username.slice(1)
     if (req.user.admin){
       res.redirect('/admin-page')
       next()
@@ -41,6 +42,7 @@ router.get('/my-page', checkForAuth, (req, res, next) => {
       Alloy.find()
       .then((alloysResult) => {
         res.render('myPage', {
+          userName: fixedName,
           userData: userResult, 
           alloysData: alloysResult, 
           elementsData: allElements,
