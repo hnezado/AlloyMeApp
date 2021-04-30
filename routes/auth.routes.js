@@ -20,7 +20,8 @@ router.get('/signup', checkForAuth, (req, res, next) => {
 
 router.post('/signup', (req, res) => {
   const layout = '/layouts/noAuth'
-  const {username, password} = req.body
+  let {username, password} = req.body
+  username = username.toLowerCase()
   if (username === '' || password === ''){
     res.render('signup', {errMsg: `Please fill all the fields`, layout})
   } else if (password.length < 4) {
