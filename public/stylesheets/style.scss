@@ -39,8 +39,27 @@ main{
 .footer-sign{
   color: black;
   position: fixed;
-  bottom: 20px;
+  bottom: 16px;
   right: 40px;
+  .sign{
+    color: black;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: large;
+    
+    overflow: hidden;
+    background: linear-gradient(to right, white, white 50%, black 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+    text-decoration: none; // text decorations are clipped in WebKit browsers
+    &:hover {
+      background-position: 0 100%;
+    }
+  }
 }
 .title{
   font-weight: 800;
@@ -155,7 +174,7 @@ table {
         width: 20px;
       }
     }
-    .ap-users-table-td-actions{
+    .ap-table-td-actions{
       min-width: 105px;
     }
   }

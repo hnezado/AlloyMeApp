@@ -23,6 +23,8 @@ router.post('/signup', (req, res) => {
   const {username, password} = req.body
   if (username === '' || password === ''){
     res.render('signup', {errMsg: `Please fill all the fields`, layout})
+  } else if (password.length < 4) {
+    res.render('signup', {errMsg: `The password length must be higher than 4 characters`, layout})
   }
   User.findOne({username})
   .then((result) => {

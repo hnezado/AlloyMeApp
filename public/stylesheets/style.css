@@ -44,8 +44,30 @@ main {
 .footer-sign {
   color: black;
   position: fixed;
-  bottom: 20px;
+  bottom: 16px;
   right: 40px;
+}
+
+.footer-sign .sign {
+  color: black;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: large;
+  overflow: hidden;
+  background: -webkit-gradient(linear, left top, right top, from(white), color-stop(50%, white), color-stop(50%, black));
+  background: linear-gradient(to right, white, white 50%, black 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  -webkit-transition: background-position 275ms ease;
+  transition: background-position 275ms ease;
+  text-decoration: none;
+}
+
+.footer-sign .sign:hover {
+  background-position: 0 100%;
 }
 
 .title {
@@ -203,7 +225,7 @@ table td .td-checkbox input {
   width: 20px;
 }
 
-table td .ap-users-table-td-actions {
+table td .ap-table-td-actions {
   min-width: 105px;
 }
 

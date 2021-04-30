@@ -28,7 +28,7 @@
         </div>
       </td>
       <td>
-        <div class="ap-users-table-td-actions">
+        <div class="ap-table-td-actions">
           <button type="button" class="event-ap-users-edit-btn"><img src="../images/edit.png" alt="edit-icon"></button>
           <button type="button" class="event-ap-users-delete-btn"><img src="../images/delete.png" alt="delete-icon"></button>
         </div>
@@ -50,7 +50,7 @@
             </div>
             <div class="modal-input">
               <input type="text" name="username" value="{{username}}">
-              <input type="password" name="password" value="">
+              <input type="password" name="password">
               {{#if admin}}<input type="checkbox" name="admin" value=1 checked>
               {{else}}<input type="checkbox" name="admin" value=1>{{/if}}
               <input type="number" name="knowledgePoints" value="{{knowledgePoints}}">
@@ -122,8 +122,10 @@
         {{/each}}
       </td>
       <td>
-        <button type="button" class="event-ap-alloys-edit-btn"><img src="../images/edit.png" alt="edit-icon"></button>
-        <button type="button" class="event-ap-alloys-delete-btn"><img src="../images/delete.png" alt="delete-icon"></button>
+        <div class="ap-table-td-actions">
+          <button type="button" class="event-ap-alloys-edit-btn"><img src="../images/edit.png" alt="edit-icon"></button>
+          <button type="button" class="event-ap-alloys-delete-btn"><img src="../images/delete.png" alt="delete-icon"></button>
+        </div>
       </td>
     </tr>
 
@@ -139,7 +141,7 @@
           <div class="event-alloys-edit-modal-input modal-input {{_id}}">
             <input type="text" name="alloyName" value="{{alloyName}}" oninput={changeInput(this)}>
             {{#each mixture}}
-            <input type="text" name="components" value={{this}} oninput={changeInput(this)}>
+            <input type="text" name="components" value="{{this}}" oninput={changeInput(this)}>
             {{/each}}
           </div>
         </div>
@@ -193,14 +195,56 @@
       <td>{{question}}</td>
       <td>{{answer}}</td>
       <td>
-        <form action="/test/delete/{{_id}}" method="POST">
-          <button type="submit"><img src="../images/delete.png" alt="delete-icon"></button>
-        </form>
+        <div class="ap-table-td-actions">
+          <button type="button" class="event-ap-tests-edit-btn"><img src="../images/edit.png" alt="edit-icon"></button>
+          <button type="button" class="event-ap-tests-delete-btn"><img src="../images/delete.png" alt="delete-icon"></button>
+        </div>
       </td>
     </tr>
+  
+    {{!-- /////////// Modals /////////// --}}
+    <div class="event-ap-tests-edit-modal modal">
+      <div class="modal-content">
+        <div class="event-tests-close-edit-modal-btn close-modal">&times;</div>
+        <form action="/test/edit/{{_id}}" method="POST">
+          <div class="modal-data">
+            <div class="modal-label">
+              <label for="question">Question: </label>
+              <label for="answer">Answer: </label>
+            </div>
+            <div class="modal-input">
+              <input type="text" name="question" value="{{question}}">
+              <input type="text" name="answer" value="{{answer}}">
+            </div>
+          </div>
+          <button type="submit">Edit test</button>
+        </form>
+      </div>
+    </div>
+  
+    <div class="event-ap-tests-delete-modal modal">
+      <div class="modal-content">
+        <div class="event-tests-close-delete-modal-btn close-modal">&times;</div>
+        <form action="/test/delete/{{_id}}" method="POST">
+          <div class="modal-data">
+            <div class="modal-label">
+              <label for="question">Question: </label>
+              <label for="answer">Answer: </label>
+            </div>
+            <div class="modal-input">
+              <input type="text" name="question" value={{question}} readonly>
+              <input type="text" name="answer" value={{answer}} readonly>
+            </div>
+          </div>
+          <button type="submit">Delete test</button>
+        </form>
+      </div>
+    </div>
+
   {{/each}}
   </table>
 
+  {{!-- /////////// New alloy form /////////// --}}
   <form class="admin-form" action="/test/new" method="POST">
     <h5>New test</h5>
     <input type="text" name="question" placeholder="Insert new question">

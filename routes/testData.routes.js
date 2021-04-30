@@ -66,6 +66,21 @@ router.post('/test/new', (req, res) => {
   })
 })
 
+router.post('/test/edit/:_id', (req, res, next) => {
+  const {question, answer} = req.body
+  if (question && answer){
+    Test.findByIdAndUpdate(req.params._id, req.body)
+    .then((result) => {
+      res.redirect('/admin-page')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  } else {
+    res.redirect('/admin-page')
+  }
+})
+
 router.post('/test/delete/:_id', (req, res) => {
   Test.findByIdAndDelete(req.params._id)
   .then((result) => {

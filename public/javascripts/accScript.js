@@ -10,28 +10,36 @@ const addEventListeners = (array, mode)=>{
           panel.style.maxHeight = panel.scrollHeight + 'px';
         }
       } else if (mode === 'user-show-edit-modal'){
-        userEditModalArray[i].style.display = 'block';
+        userEditModalArray[i].style.display = 'block'
       } else if (mode === 'user-show-delete-modal'){
-        userDeleteModalArray[i].style.display = 'block';
+        userDeleteModalArray[i].style.display = 'block'
       } else if (mode === 'user-hide-edit-modal'){
         userEditModalArray[i].style.display = 'none'
       } else if (mode === 'user-hide-delete-modal'){
         userDeleteModalArray[i].style.display = 'none'
       } else if (mode === 'alloy-show-edit-modal'){
-        alloyEditModalArray[i].style.display = 'block';
+        alloyEditModalArray[i].style.display = 'block'
       } else if (mode === 'alloy-show-delete-modal'){
-        alloyDeleteModalArray[i].style.display = 'block';
+        alloyDeleteModalArray[i].style.display = 'block'
       } else if (mode === 'alloy-hide-edit-modal'){
         alloyEditModalArray[i].style.display = 'none'
       } else if (mode === 'alloy-hide-delete-modal'){
         alloyDeleteModalArray[i].style.display = 'none'
       } else if (mode === 'alloy-add-component-form'){
         alloyFormInputDiv.innerHTML += `<input type="text" name="components" placeholder="Component name" oninput={changeInput(this)}>`
-        const panel = document.querySelectorAll('.accordion-panel')[1];
+        const panel = document.querySelectorAll('.accordion-panel')[1]
         panel.style.maxHeight = panel.scrollHeight + 'px';
       } else if (mode === 'alloy-add-component-edit-modal'){
         alloyEditModalInputArray[i].innerHTML += `<input type="text" name="components" placeholder="Introduce name" oninput={changeInput(this)}>`
         alloyEditModalArray[i].style.maxHeight = alloyEditModalArray[i].scrollHeight + 'px';
+      } else if (mode === 'test-show-edit-modal'){
+        testEditModalArray[i].style.display = 'block'
+      } else if (mode === 'test-show-delete-modal'){
+        testDeleteModalArray[i].style.display = 'block'
+      } else if (mode === 'test-hide-edit-modal'){
+        testEditModalArray[i].style.display = 'none'
+      } else if (mode === 'test-hide-delete-modal'){
+        testDeleteModalArray[i].style.display = 'none'
       }
     })
   }
@@ -107,3 +115,17 @@ const submitEditForm = (event)=>{
 const changeInput = (thisInput)=>{
   thisInput.setAttribute('value', thisInput.value)
 }
+
+// Test table events //
+const testEditTdBtnArray = document.querySelectorAll('.event-ap-tests-edit-btn')
+const testDeleteTdBtnArray = document.querySelectorAll('.event-ap-tests-delete-btn')
+const testEditModalArray = document.querySelectorAll('.event-ap-tests-edit-modal')
+const testDeleteModalArray = document.querySelectorAll('.event-ap-tests-delete-modal')
+addEventListeners(testEditTdBtnArray, 'test-show-edit-modal')
+addEventListeners(testDeleteTdBtnArray, 'test-show-delete-modal')
+
+// Test modal events //
+const closeTestEditModalBtnArray = document.querySelectorAll('.event-tests-close-edit-modal-btn')
+const closeTestDeleteModalBtnArray = document.querySelectorAll('.event-tests-close-delete-modal-btn')
+addEventListeners(closeTestEditModalBtnArray, 'test-hide-edit-modal')
+addEventListeners(closeTestDeleteModalBtnArray, 'test-hide-delete-modal')
