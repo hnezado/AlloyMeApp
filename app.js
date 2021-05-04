@@ -9,14 +9,14 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
 
-// Step 2: Import installed packages (to use passport and more)
+// Import installed packages
 const bcrypt = require('bcrypt')
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 
-// Step 9: Import model "User.model"
+// Import model
 const User = require('./models/User.model')
 
 // DB config
@@ -43,19 +43,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// Step 3: Config middle-ware "express-session"
+// Config middle-ware "express-session"
 app.use(session({
   secret: process.env.SECRET,
   resave: true,
   saveUninitialized: true
 }))
 
-// Step 4: Config user serialization
+// Config user serialization
 passport.serializeUser((user, callback) => {
   callback(null, user._id)
 })
 
-// Step 5: Config user de-serialization
+// Config user de-serialization
 passport.deserializeUser((id, callback) => {
   User.findById(id)
   .then((result) => {
@@ -66,10 +66,10 @@ passport.deserializeUser((id, callback) => {
   })
 })
 
-// Step 6: Config middle-ware "flash"
+// Config middle-ware "flash"
 app.use(flash())
 
-// Step 7: Config middle-ware "Strategy"
+// Config middle-ware "Strategy"
 passport.use(new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password',
@@ -90,7 +90,7 @@ passport.use(new LocalStrategy({
   })
 }))
 
-// Step 10: Config middle-ware "passport"
+// Config middle-ware "passport"
 app.use(passport.initialize())
 app.use(passport.session())
 

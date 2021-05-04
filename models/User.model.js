@@ -6,7 +6,6 @@ const userSchema = new Schema(
     password: {type: String, required: true, createIndexes: true},
     admin: {type: Boolean, default: false},
     knowledgePoints: {type: Number, default: 0},
-    // elements: [{type: Schema.Types.ObjectId, ref: 'Element'}],
     comments: {type: [String]}
   },
   {

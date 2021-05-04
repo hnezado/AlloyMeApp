@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const chalk = require('chalk')
 const pt = require('periodic-table');
 
 const allElements = pt.all()

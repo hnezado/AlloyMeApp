@@ -3,14 +3,14 @@
 # Introduction
 ---
 
-Alloy Me App is my second project made in just 5 days for the backend Ironhack Remote bootcamp module.
+Alloy Me App is my second project made in just 7 days for the backend Ironhack Remote bootcamp module.
 
 # The project
 ---
 
 The project consists of an interactive chemistry learning web app. To start, you need to create an account and login. Then, you will have access to your own page with some useful information about chemical elements and some alloys, and you will be able to test your knowledge and earn points by answering questions in the random test page.
 
-If you have admin privileges you will be able to see, edit, create and delete any user, alloy or test.
+If you have admin privileges you will be able to create, read, update and delete any user, alloy or test. You can try login with (admin/admin).
 
 ![ScreenShot](https://i.ibb.co/RCYqq04/Alloy-Me-App-example-BG.png)  
 [Link to the app](https://alloy-me-app.herokuapp.com/)
@@ -24,8 +24,10 @@ If you have admin privileges you will be able to see, edit, create and delete an
 * MongoDB / Mongoose
 * Handlebars
 * Passport / bcrypt
+* Atlas MongoDB
 * Git
-* GitHub & GitHub Pages
+* GitHub
+* Heroku
 
 # Additional tools used
 ---
