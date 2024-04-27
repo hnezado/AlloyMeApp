@@ -7,6 +7,7 @@
     "dev": "nodemon app.js"
   },
   "dependencies": {
+    "aws-sdk": "^2.1608.0",
     "bcrypt": "^5.0.1",
     "chalk": "^4.1.1",
     "connect-flash": "^0.1.1",
@@ -17,6 +18,7 @@
     "hbs": "^4.0.1",
     "mongoose": "^5.2.10",
     "morgan": "^1.9.0",
+    "parse": "^4.0.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "periodic-table": "0.0.8",
