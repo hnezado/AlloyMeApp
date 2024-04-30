@@ -1,12 +1,8 @@
-// require("dotenv").config();
-
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const favicon = require("serve-favicon");
-const hbs = require("hbs");
 const mongoose = require("mongoose");
-const logger = require("morgan");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const flash = require("connect-flash");
@@ -15,6 +11,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const configFn = require("./config");
 const User = require("./models/User.model");
+const https = require("https");
+const fs = require("fs");
 
 // AWS Configuration
 const AWS = require("aws-sdk");
@@ -26,20 +24,21 @@ let config;
 
 async function initialize() {
   try {
-    config = await configFn.getConfig(AWS);
+    config = await configFn.getConfig();
     setUpMiddleware(config);
     setUpRoutes();
 
-    app.listen(config.port, () => {
+    https.createServer(getHttpsOptions(), app).listen(config.port, () => {
       console.log(`Listening on port ${config.port}`);
     });
+    // app.listen(config.port, () => {
+    // });
   } catch (err) {
     console.error("Error resolving configuration", err);
   }
 }
 
 function setUpMiddleware(config) {
-  // app.use(logger("common"));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(cookieParser());
@@ -54,8 +53,8 @@ function setUpMiddleware(config) {
     })
   );
 
-  initDb();
   initPassport();
+  initDb();
 
   // Express View engine setup
   app.set("views", path.join(__dirname, "views"));
@@ -71,7 +70,6 @@ function initDb() {
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: true,
         useFindAndModify: false,
       }
     )
@@ -137,6 +135,13 @@ function setUpRoutes() {
   app.use("/", require("./routes/elements.routes"));
   app.use("/", require("./routes/alloyData.routes"));
   app.use("/", require("./routes/testData.routes"));
+}
+
+function getHttpsOptions() {
+  return {
+    cert: fs.readFileSync(config.httpsServer.CERT_PATH),
+    key: fs.readFileSync(config.httpsServer.PRIV_KEY),
+  };
 }
 
 initialize();

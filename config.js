@@ -15,12 +15,7 @@ async function getParam(param) {
   }
 }
 
-async function getConfig(AWS) {
-  // const httpsServer = {
-  //   certificate: await getParam("PORTFOLIO_CERTIFICATE_PATH"),
-  //   privateKey: await getParam("PORTFOLIO_PRIVATE_KEY"),
-  // };
-
+async function getConfig() {
   return {
     port: 3001,
     db: {
@@ -33,6 +28,10 @@ async function getConfig(AWS) {
     },
     session: {
       SECRET: await getParam("ALLOYMEAPP_SESSION_SECRET"),
+    },
+    httpsServer: {
+      CERT_PATH: await getParam("PORTFOLIO_CERTIFICATE_PATH"),
+      PRIV_KEY: await getParam("PORTFOLIO_PRIVATE_KEY"),
     },
   };
 }
