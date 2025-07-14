@@ -14,25 +14,22 @@ const User = require("./models/User.model");
 const https = require("https");
 const fs = require("fs");
 
-// AWS Configuration
-const AWS = require("aws-sdk");
-AWS.config.update({ region: "eu-west-3" });
-
 // Express
 const app = express();
 let config;
 
-async function initialize() {
+function initialize() {
   try {
-    config = await configFn.getConfig();
+    config = configFn.getConfig();
     setUpMiddleware(config);
     setUpRoutes();
 
-    https.createServer(getHttpsOptions(), app).listen(config.port, () => {
-      console.log(`Listening on port ${config.port}`);
-    });
-    // app.listen(config.port, () => {
+    // https.createServer(getHttpsOptions(), app).listen(config.PORT, () => {
+    //   console.log(`Listening on port ${config.PORT}`);
     // });
+    app.listen(config.PORT, () => {
+      console.log(`Listening on port ${config.PORT}`);
+    });
   } catch (err) {
     console.error("Error resolving configuration", err);
   }
@@ -66,16 +63,11 @@ function setUpMiddleware(config) {
 function initDb() {
   mongoose
     .connect(
-      `mongodb+srv://${config.db.auth.DB_USER}:${config.db.auth.DB_PASS}@${config.db.HOST}/${config.db.auth.DB_NAME}?retryWrites=true&w=majority`,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-      }
+      `mongodb+srv://${config.db.auth.USER}:${config.db.auth.PASS}@${config.db.HOST}/${config.db.NAME}?retryWrites=true&w=majority`,
     )
     .then((res) => {
       console.log(
-        `Connected to Mongo! Database name: "${res.connections[0].name}"`
+        `Connected to Mongo! Database name: "${config.db.NAME}"`
       );
     })
     .catch((err) => {

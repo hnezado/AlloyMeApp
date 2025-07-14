@@ -1,37 +1,22 @@
-const AWS = require("aws-sdk");
-AWS.config.update({ region: "eu-west-3" });
-const ssm = new AWS.SSM();
+require("dotenv").config({ path: __dirname + '/.env' });
 
-async function getParam(param) {
-  try {
-    const data = await ssm
-      .getParameter({ Name: param, WithDecryption: false })
-      .promise();
-    const parameterValue = data.Parameter.Value;
-    return parameterValue;
-  } catch (err) {
-    console.error("Error obtaining parameter value", err);
-    throw err;
-  }
-}
-
-async function getConfig() {
+function getConfig() {
   return {
-    port: 3001,
+    PORT: process.env.PORT,
     db: {
-      HOST: "cluster0.tpwjp.mongodb.net",
+      HOST: process.env.DB_HOST,
+      NAME: process.env.DB_NAME,
       auth: {
-        DB_USER: await getParam("ALLOYMEAPP_DB_USER"),
-        DB_PASS: await getParam("ALLOYMEAPP_DB_PASS"),
-        DB_NAME: await getParam("ALLOYMEAPP_DB_NAME"),
+        USER: process.env.DB_USER,
+        PASS: process.env.DB_PASS,
       },
     },
     session: {
-      SECRET: await getParam("ALLOYMEAPP_SESSION_SECRET"),
+      SECRET: process.env.SESSION_SECRET,
     },
     httpsServer: {
-      CERT_PATH: await getParam("PORTFOLIO_CERTIFICATE_PATH"),
-      PRIV_KEY: await getParam("PORTFOLIO_PRIVATE_KEY"),
+      CERT_PATH: process.env.HTTPS_CERTIFICATE,
+      PRIV_KEY: process.env.HTTPS_PRIVATE_KEY,
     },
   };
 }

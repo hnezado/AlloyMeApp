@@ -32,8 +32,11 @@ There is a testing account which you can try login with test/test.
 - Atlas MongoDB
 - Git
 - GitHub
-- <del>Heroku</del>
-- AWS (deployment)
+
+# Deployment
+- <del>Heroku</del> (old)
+- <del>AWS</del> (old)
+- Raspberry Pi5 setup
 
 # Additional tools used
 
