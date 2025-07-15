@@ -7,7 +7,6 @@
     "dev": "nodemon app.js"
   },
   "dependencies": {
-    "aws-sdk": "^2.1608.0",
     "bcrypt": "^5.0.1",
     "chalk": "^4.1.1",
     "connect-flash": "^0.1.1",
